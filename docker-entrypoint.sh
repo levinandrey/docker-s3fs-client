@@ -71,12 +71,13 @@ fi
 # detect that mounting was a success. Execute the command on success.
 
 
-EXEC_S3FS_CODE="su - ${RUN_AS} -c s3fs $DEBUG_OPTS ${S3FS_ARGS} \
+EXEC_S3FS_CODE="su - ${RUN_AS} -c s3fs $DEBUG_OPTS \
+    ${AWS_S3_BUCKET}:${AWS_S3_MOUNT} \
     -o passwd_file=${AWS_S3_AUTHFILE} \
     -o url=${AWS_S3_URL} \
     -o uid=$UID \
     -o gid=$GID \
-    ${AWS_S3_BUCKET} ${AWS_S3_MOUNT}"
+    ${S3FS_ARGS}"
 
 echo $EXEC_S3FS_CODE
 $EXEC_S3FS_CODE    
