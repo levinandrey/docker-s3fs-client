@@ -17,6 +17,8 @@ RUN apk --no-cache add \
     curl-dev && \
   git clone https://github.com/s3fs-fuse/s3fs-fuse.git && \
   cd s3fs-fuse && \
+  S3FS_VERSION_LATEST=$(git describe --tags `git rev-list --tags --max-count=1`) && \
+  S3FS_VERSION=$S3FS_VERSION_LATEST && \
   git checkout tags/${S3FS_VERSION} && \
   ./autogen.sh && \
   ./configure --prefix=/usr && \
