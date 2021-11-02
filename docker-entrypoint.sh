@@ -70,6 +70,9 @@ fi
 # sub-directory, so we can use the presence of some file/dir as a marker to
 # detect that mounting was a success. Execute the command on success.
 
+echo $S3FS_ARGS
+
+echo ${S3FS_ARGS}
 
 su - $RUN_AS -c "s3fs $DEBUG_OPTS ${AWS_S3_BUCKET}:/ ${AWS_S3_MOUNT} \
     -o url=${AWS_S3_URL} \
